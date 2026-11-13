@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================================
+    POUR COMPRENDRE (FR) : le fichier pom.xml
+    ============================================================================
+    "POM" = Project Object Model. C'est la CARTE D'IDENTITÉ du projet pour Maven,
+    l'outil qui compile, teste et emballe ton programme.
+
+    Ici on dit à Maven :
+      - comment s'appelle le projet (groupId + artifactId + version) ;
+      - quelle version de Java utiliser (25) ;
+      - de quelles BIBLIOTHÈQUES il a besoin (les "dependencies") : du code
+        écrit par d'autres, que Maven télécharge tout seul sur Internet ;
+      - quels PLUGINS utiliser (des outils qui ajoutent des commandes à Maven).
+
+    Ce fichier est écrit en XML : des balises <ouvrante> et </fermante>,
+    un peu comme des boîtes rangées dans des boîtes.
+
+    Tu ne dois PAS tout comprendre aujourd'hui. Tu le modifieras toi-même
+    plus tard (exercice 6 pour la couverture de tests, exercice 8 pour JavaFX).
+    ============================================================================
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Identité du projet : "qui" (groupId), "quoi" (artifactId), "quelle version". -->
+    <groupId>ch.keystocode</groupId>
+    <artifactId>keys-to-code</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>KeysToCode</name>
+    <description>Learn touch typing while learning to code: a typing trainer built step by step.</description>
+
+    <properties>
+        <!-- Version de Java utilisée pour compiler. -->
+        <maven.compiler.release>25</maven.compiler.release>
+        <!-- Tous nos fichiers sont en UTF-8 (pour que les accents s'affichent bien). -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- La classe qui contient la méthode main() : le point de départ du programme. -->
+        <exec.mainClass>ch.keystocode.App</exec.mainClass>
+
+        <!-- Versions des bibliothèques et plugins, rangées ici pour les retrouver facilement. -->
+        <junit.version>5.13.4</junit.version>
+        <maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+        <exec-maven-plugin.version>3.5.1</exec-maven-plugin.version>
+    </properties>
+
+    <dependencies>
+        <!--
+            JUnit 5 : la bibliothèque qui permet d'écrire des TESTS AUTOMATIQUES.
+            <scope>test</scope> = utilisée seulement pour les tests, pas dans
+            le programme final.
+        -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Compile le code Java (.java) en bytecode (.class). -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+            </plugin>
+
+            <!-- Lance les tests JUnit pendant "mvn test" ou "mvn verify". -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
+
+            <!-- Permet de lancer l'application avec la commande : mvn exec:java -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

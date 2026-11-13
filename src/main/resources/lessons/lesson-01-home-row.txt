@@ -1,0 +1,29 @@
+# ============================================================================
+# KeysToCode - Exercise 1 - The home row (Swiss French keyboard)
+# Left hand : a s d f   (little finger on a, index finger on f)
+# Right hand: j k l     (index finger on j)
+# Thumbs    : space bar
+# Lines starting with # are comments. Blank lines are ignored.
+# ============================================================================
+@title Exercice 1 - La rangée de base (a s d f  j k l)
+
+fff jjj fff jjj
+fjf jfj fjf jfj
+ddd kkk ddd kkk
+dkd kdk fjf jfj
+sss lll sss lll
+sls lsl dkd kdk
+aaa sss ddd fff
+jjj kkk lll jjj
+fdsa jkl fdsa jkl
+asdf jkl asdf jkl
+ask a lad
+a sad lass
+all dad falls
+salsa salads
+a flask falls
+jak lads ask
+alfalfa salad
+dad asks all lads
+a lad falls as a lass asks
+salsa all fall
